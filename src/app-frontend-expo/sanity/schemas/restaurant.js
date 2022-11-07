@@ -7,7 +7,7 @@ export default {
       name: "name",
       type: "string",
       title: "Restaurant name",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().max(50),
     },
     {
       name: "short_description",
