@@ -32,6 +32,42 @@ export default function Featured({ id, title, description, featuredCategory }) {
           long={20}
           lat={0}
         />
+        <RestaurantCard
+          if={1}
+          imgUrl="https://links.papareact.com/gn7"
+          title="Sushi"
+          rating={4.5}
+          genre="Japanese"
+          address="123 Main St"
+          short_description="This is a great description"
+          dishes={[]}
+          long={20}
+          lat={0}
+        />
+        <RestaurantCard
+          if={1}
+          imgUrl="https://links.papareact.com/gn7"
+          title="Sushi"
+          rating={4.5}
+          genre="Japanese"
+          address="123 Main St"
+          short_description="This is a great description"
+          dishes={[]}
+          long={20}
+          lat={0}
+        />
+        <RestaurantCard
+          if={1}
+          imgUrl="https://links.papareact.com/gn7"
+          title="Sushi"
+          rating={4.5}
+          genre="Japanese"
+          address="123 Main St"
+          short_description="This is a great description"
+          dishes={[]}
+          long={20}
+          lat={0}
+        />
       </ScrollView>
     </View>
   );
