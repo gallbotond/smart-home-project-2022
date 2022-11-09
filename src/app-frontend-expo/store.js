@@ -5,6 +5,6 @@ import restaurantReducer from './features/restaurantSlice'
 export default configureStore({
   reducer: {
     basket: basketReducer,
-    restaurant: restaurantReducer
+    restaurant: restaurantReducer,
   },
 });

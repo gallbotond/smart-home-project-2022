@@ -6,8 +6,9 @@ import TodoListApp from "./apps/TodoListApp";
 export default function App() {
   return (
     <>
-      <FoodDeliveryApp />
+      {/* <FoodDeliveryApp /> */}
       {/* <TodoListApp /> */}
+      
     </>
   );
 }
