@@ -30,8 +30,6 @@ export default function App() {
     console.log(isModalVisible);
   }
 
-  console.log(list);
-
   return (
     <View style={styles.appContainer}>
       <StatusBar />
