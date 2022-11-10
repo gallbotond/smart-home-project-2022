@@ -6,6 +6,7 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import { GOOGLE_MAPS_KEY } from "@env";
 import { setDestination, setOrigin } from "../slices/navSlice";
 import { useDispatch } from "react-redux";
+import NavFavourites from "../components/NavFavourites";
 
 export default function UberHomeScreen() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ export default function UberHomeScreen() {
         />
 
         <NavOptions />
+        <NavFavourites />
       </View>
     </SafeAreaView>
   );

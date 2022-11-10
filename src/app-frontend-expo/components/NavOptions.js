@@ -22,7 +22,7 @@ const data = [
 
 export default function NavOptions() {
   const navigation = useNavigation();
-  const origin = useSelector(selectOrigin);
+  const origin = true; //useSelector(selectOrigin);
 
   return (
     <FlatList
