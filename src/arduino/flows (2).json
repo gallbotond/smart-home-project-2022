@@ -1,0 +1,503 @@
+[
+    {
+        "id": "885b7fe5b7afaeb2",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1b67b6d8b20274e5",
+        "type": "serial in",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "serial": "aa604a3528e2ac0a",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "0e3fd7a5a77720d0"
+            ]
+        ]
+    },
+    {
+        "id": "97ace192dbb5a179",
+        "type": "ui_gauge",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "group": "96bc4ea6bcbdba52",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "500",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 960,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "6e3c7686d510526a",
+        "type": "function",
+        "z": "885b7fe5b7afaeb2",
+        "name": "json to string",
+        "func": "var b = JSON.parse(JSON.stringify(msg.payload));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 160,
+        "wires": [
+            [
+                "0031b774801f6ce1",
+                "75b8dc8980ac0823",
+                "67e79c24ee157bbe",
+                "7721e7ab55978106"
+            ]
+        ]
+    },
+    {
+        "id": "0e3fd7a5a77720d0",
+        "type": "json",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 330,
+        "y": 160,
+        "wires": [
+            [
+                "6e3c7686d510526a"
+            ]
+        ]
+    },
+    {
+        "id": "0031b774801f6ce1",
+        "type": "function",
+        "z": "885b7fe5b7afaeb2",
+        "name": "gethumi",
+        "func": "msg.payload = msg.payload.SENSOR1\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 160,
+        "wires": [
+            [
+                "97ace192dbb5a179",
+                "f068f3dd75177cb7"
+            ]
+        ]
+    },
+    {
+        "id": "75b8dc8980ac0823",
+        "type": "function",
+        "z": "885b7fe5b7afaeb2",
+        "name": "gettempC",
+        "func": "msg.payload = msg.payload.SENSOR2\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 240,
+        "wires": [
+            [
+                "8209a410cee7eca8",
+                "a0182e4f9307f597"
+            ]
+        ]
+    },
+    {
+        "id": "67e79c24ee157bbe",
+        "type": "function",
+        "z": "885b7fe5b7afaeb2",
+        "name": "gettempF",
+        "func": "msg.payload = msg.payload.SENSOR3\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 340,
+        "wires": [
+            [
+                "5697d7da96d6292a",
+                "2a34ca57444defa8"
+            ]
+        ]
+    },
+    {
+        "id": "8209a410cee7eca8",
+        "type": "ui_gauge",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "group": "96bc4ea6bcbdba52",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature C",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 980,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5697d7da96d6292a",
+        "type": "ui_gauge",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "group": "96bc4ea6bcbdba52",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature F",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "250",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 960,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "7721e7ab55978106",
+        "type": "function",
+        "z": "885b7fe5b7afaeb2",
+        "name": "getnoiselevel",
+        "func": "msg.payload = msg.payload.SENSOR4\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 440,
+        "wires": [
+            [
+                "f7d9731b472edc36",
+                "c0043023a9273f8c"
+            ]
+        ]
+    },
+    {
+        "id": "f7d9731b472edc36",
+        "type": "ui_chart",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "group": "b3b1205b69002869",
+        "order": 0,
+        "width": "0",
+        "height": "0",
+        "label": "Noise Level",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 970,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f068f3dd75177cb7",
+        "type": "firebase modify",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "DHT11/Humidity",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1340,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a0182e4f9307f597",
+        "type": "firebase modify",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "DHT11/Temperature C",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1360,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2a34ca57444defa8",
+        "type": "firebase modify",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "DHT11/Temperature F",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1360,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c0043023a9273f8c",
+        "type": "firebase modify",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "SonicSensor/NoiseLevel",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1370,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "07966dae0f1828d9",
+        "type": "firebase.on",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "LED",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 260,
+        "y": 540,
+        "wires": [
+            [
+                "7c7330c7346f7f38",
+                "7adf16ebf37427e4"
+            ]
+        ]
+    },
+    {
+        "id": "7c7330c7346f7f38",
+        "type": "ui_gauge",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "group": "cb5c5a4cad9a0fd5",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 690,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "7adf16ebf37427e4",
+        "type": "serial out",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "serial": "aa604a3528e2ac0a",
+        "x": 690,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "0354a010685e4e2d",
+        "type": "firebase.on",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "LED2",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 270,
+        "y": 700,
+        "wires": [
+            [
+                "3bcd9a26bd822bf8",
+                "925b321ea699c786"
+            ]
+        ]
+    },
+    {
+        "id": "3bcd9a26bd822bf8",
+        "type": "ui_gauge",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "group": "cb5c5a4cad9a0fd5",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 690,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "925b321ea699c786",
+        "type": "serial out",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "serial": "aa604a3528e2ac0a",
+        "x": 690,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "aa604a3528e2ac0a",
+        "type": "serial-port",
+        "serialport": "COM4",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "96bc4ea6bcbdba52",
+        "type": "ui_group",
+        "name": "DHT11",
+        "tab": "bb2b2a0610a698d1",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b3b1205b69002869",
+        "type": "ui_group",
+        "name": "Sonic",
+        "tab": "bb2b2a0610a698d1",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "cb5c5a4cad9a0fd5",
+        "type": "ui_group",
+        "name": "LED1",
+        "tab": "bb2b2a0610a698d1",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "bb2b2a0610a698d1",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
