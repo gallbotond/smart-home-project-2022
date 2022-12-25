@@ -1,14 +1,17 @@
 
 #include "DHT.h"
+
 #define DHTPIN 2
 #define DHTTYPE  DHT11
+#define LED 7
+#define LED2 8
 
 DHT dht(DHTPIN, DHTTYPE);
 
-int interval = 50, getdatafromDHT = 0, getdatafromsonicsensor = 0, printdatatomonitor = 0, uploaddatatofirebase = 0, state = 0; 
+unsigned long interval = 50, getdatafromDHT = 0, getdatafromsonicsensor = 0, printdatatomonitor = 0, uploaddatatofirebase = 0, state = 0; 
 unsigned long actual = 0, old = 0;
 
-
+byte led;
 
 struct dhtsensorstruct {
   float humi;
@@ -26,6 +29,8 @@ sonicsensorstruct sonicsensor{0};
 void setup() {
   Serial.begin(9600);
   dht.begin(); // initialize the sensor
+  pinMode(LED , OUTPUT);
+  pinMode(LED2 , OUTPUT);
 }
 
 void loop() {
@@ -48,6 +53,24 @@ void loop() {
  }
   switch (state) {
       case 0:
+        if (Serial.available()){
+         led = Serial.parseInt();
+
+         if(led == 4){
+           digitalWrite(LED2 , HIGH);
+          }     
+
+           if(led == 3){
+           digitalWrite(LED2 , LOW);
+          }
+         if(led == 2){
+           digitalWrite(LED , HIGH);
+          }     
+
+           if(led == 1){
+           digitalWrite(LED , LOW);
+          }
+        }
         if (actual > getdatafromDHT + 2000) {
           getdatafromDHT = actual;
           dhtsensorfunction();
@@ -62,25 +85,10 @@ void loop() {
 
       case 1:
         state = 0;
+        
         printdata();
         /*thing.handle();*/
         break;
-
-      /*case 2:
-        state = 0;
-        thing["bmp180"] >> [](pson & out) {
-          out["temperature"] = bmp1.temperature;
-          out["pressure"] = bmp1.pressure;
-        };
-        thing["mq135"] >> [](pson & out) {
-          out["Air Quality"] = ppm1.air;
-        };
-        thing["potmeter"] >> [](pson & out) {
-          out["Analog"] = pot1.analog;
-          out["Voltage"] = pot1.voltage;
-        };
-
-        break;*/
 
       default:
         break;
@@ -88,20 +96,15 @@ void loop() {
 } 
 
 void printdata(){
-    Serial.print("Humidity: ");
+    Serial.print("{\"SENSOR1\":");
     Serial.print(dhtsensor.humi);
-    Serial.print("%");
-
-    Serial.print("  |  "); 
-
-    Serial.print("Temperature: ");
+    Serial.print(",\"SENSOR2\":");
     Serial.print(dhtsensor.tempC);
-    Serial.print("°C ~ ");
+    Serial.print(",\"SENSOR3\":");
     Serial.print(dhtsensor.tempF);
-    Serial.println("°F");
-
-    Serial.print("Noise level: ");
-    Serial.println(sonicsensor.currentnoiselevel);
+    Serial.print(",\"SENSOR4\":");
+    Serial.print(sonicsensor.currentnoiselevel);
+    Serial.println("}");
   }
 
 void sonicsensorread(){
@@ -122,3 +125,4 @@ void dhtsensorfunction(){
     Serial.println("Failed to read from DHT sensor!");
   }
 }
+
