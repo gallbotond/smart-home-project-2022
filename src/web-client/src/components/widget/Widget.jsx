@@ -4,20 +4,24 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import { useEffect } from "react";
+import { async } from "@firebase/util";
+import { db } from "../../firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { useState } from "react";
 
 const Widget = ({ type }) => {
   let data;
 
-  //temporary
-  const amount = 100;
-  const diff = 20;
+  const [amount, setAmount] = useState(null)
+  const [diff, setDiff] = useState(null)
 
   switch (type) {
-    case "user":
+    case "sensors":
       data = {
-        title: "USERS",
+        title: "Total Sensors",
         isMoney: false,
-        link: "See all users",
+        link: "See all sensors",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -29,11 +33,11 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "order":
+    case "logs":
       data = {
-        title: "ORDERS",
+        title: "Logs",
         isMoney: false,
-        link: "View all orders",
+        link: "View all logs",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -45,11 +49,11 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "earning":
+    case "online":
       data = {
-        title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
+        title: "Sensors Online",
+        isMoney: false,
+        link: "View online sensors",
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -58,11 +62,11 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "balance":
+    case "offline":
       data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
+        title: "Sensors Offline",
+        isMoney: false,
+        link: "View offline sensors",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -77,6 +81,35 @@ const Widget = ({ type }) => {
     default:
       break;
   }
+
+  useEffect(() => {
+    const fetchData = async() => {
+      const today = new Date();
+      const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1))
+      const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2))
+
+      const lastMonthQuery = query(
+        collection(db, 'sensors'),
+        where("timeStamp", '<=', today),
+        where('timeStamp', '>', lastMonth)
+        )
+      const prevMonthQuery = query(
+        collection(db, 'users'),
+        where('timeStamp', '<=', lastMonth),
+        where('timeStamp', '>', prevMonth)
+        )
+
+        const lastMonthData = await getDocs(lastMonthQuery)
+        const prevMonthData = await getDocs(prevMonthQuery)
+
+        console.log(lastMonthData, prevMonthData.docs.length)
+
+        setAmount(lastMonthData.docs.length)
+        setDiff((lastMonthData.docs.length - prevMonthData.docs.length) / prevMonthData.docs.length)
+    }
+    fetchData()
+  }, [])
+  
 
   return (
     <div className="widget">
