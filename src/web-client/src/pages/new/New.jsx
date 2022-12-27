@@ -91,13 +91,30 @@ const New = ({ inputs, title }) => {
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
-                  <input
-                    id={input.id}
-                    type={input.type}
-                    placeholder={input.placeholder}
-                    onChange={handleInput}
-                    value={data.input}
-                  />
+                  {input.type === "radio" ? (
+                    input.values.map((value, index) => (
+                      <div className="radio" key={index}>
+                        <label>{value.name}</label>
+                        <div className="category">
+                          <input
+                            id={input.id}
+                            type={input.type}
+                            onChange={handleInput}
+                            value={value.name}
+                            name={input.id}
+                          />
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <input
+                      id={input.id}
+                      type={input.type}
+                      placeholder={input.placeholder}
+                      onChange={handleInput}
+                      value={data.input}
+                    />
+                  )}
                 </div>
               ))}
               <button type="submit">Send</button>

@@ -58,8 +58,14 @@ export const sensorInputs = [
   {
     id: "category",
     label: "Category",
-    type: "text",
-    placeholder: "Computers",
+    type: "radio",
+    placeholder: "temperature",
+    values: [
+      { name: "humidity", img: "./img/humidity.svg" },
+      { name: "temperature", img: "./img/temperature.svg" },
+      { name: "proximity", img: "./img/proximity.svg" },
+      { name: "switch", img: "./img/switch.svg" },
+    ],
   },
   {
     id: "initVal",

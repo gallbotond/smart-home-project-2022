@@ -58,6 +58,12 @@
               border: none;
               border-bottom: 1px solid gray;
             }
+
+            .radio {
+              display: flex;
+              gap: 1em;
+              justify-content: end;
+            }
           }
 
           button {
