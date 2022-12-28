@@ -31,7 +31,7 @@ const Single = () => {
           // console.log(date)
           chartValue.name = date.toString().substring(16, 24);
           chartValues.push(chartValue);
-          console.log(chartValues)
+          // console.log(chartValues)
           chartValue = { temp: 0, name: "" };
         }
 
