@@ -64,7 +64,8 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            {/* TODO: dynamic routing get id like delete method */}
+            <Link to={`/sensors/${params.row.id}`} style={{ textDecoration: "none" }}> 
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -78,6 +79,8 @@ const Datatable = () => {
       },
     },
   ];
+
+  // console.log(data);
   return (
     <div className="datatable">
       <div className="datatableTitle">
@@ -92,7 +95,6 @@ const Datatable = () => {
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
       />
     </div>
   );

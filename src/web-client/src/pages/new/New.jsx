@@ -17,15 +17,51 @@ import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { realtimeDb } from "../../firebase";
 
+const datasample = [
+  {
+    "-NK9aauNDR4NeFzcgAwZ": 25.3,
+    "-NK9aauNDR4NeFzcgA32": 1671993913126,
+  },
+  {
+    "-NK9aauNer3NeFzcgAwZ": 25.4,
+    "-NK9aaugDR4NeFzcgA32": 1671993923136,
+  },
+  {
+    "-NK9aauNDR4NeF34gAwZ": 25.1,
+    "-NK9aauNDR4NeFzcgA32": 1671993933141,
+  },
+  {
+    "-NK9aauNDR4seFzcgAwZ": 25.2,
+    "-NK9gauNDR4NeFzcgA32": 1671993943147,
+  },
+  {
+    "-NK9aauNDR4NeF4cgAwZ": 25.3,
+    "-NK9aauNgR4NeFzcgA32": 1671993953153,
+  },
+  {
+    "-NK9aauNDR4NeazcgAwZ": 25.7,
+    "-NK9aauNDR4NeFacgA32": 1671993963162,
+  },
+  {
+    "-NK9aauNDR4NeFzcgAwZ": 25.6,
+    "-NK9aauNDR4NeFzcgA32": 1671993973170,
+  },
+  {
+    "-NK9aauNDR4NeFzcgAwZ": 25.9,
+    "-NK9aauNDR4NeFzcgA32": 1671993996204,
+  },
+];
+
 const New = ({ inputs, title }) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
-  const [value, setValue] = useState(0);
+  const [values, setValues] = useState("");
+  const [image, setImage] = useState("");
   const navigate = useNavigate();
 
   const makeRealTimeDatabaseEntry = (uuid) => {
     set(ref(realtimeDb, `/${uuid}`), {
-      value,
+      values,
     });
   };
 
@@ -42,6 +78,7 @@ const New = ({ inputs, title }) => {
     try {
       await addDoc(collection(db, "sensors"), {
         ...data,
+        img: image,
         uid: uuid,
         timeStamp: serverTimestamp(),
       });
@@ -53,7 +90,7 @@ const New = ({ inputs, title }) => {
     }
   };
 
-  console.log(data);
+  console.log(image);
 
   return (
     <div className="new">
@@ -67,9 +104,9 @@ const New = ({ inputs, title }) => {
           <div className="left">
             <img
               src={
-                file
-                  ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                !image
+                  ? "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  : "http://localhost:3000/" + image
               }
               alt=""
             />
@@ -102,6 +139,7 @@ const New = ({ inputs, title }) => {
                             onChange={handleInput}
                             value={value.name}
                             name={input.id}
+                            onClick={() => setImage(value.img)}
                           />
                         </div>
                       </div>

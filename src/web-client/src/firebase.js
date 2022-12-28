@@ -18,6 +18,6 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth();
 export const db = getFirestore();
-export const realtimeDb = getDatabase(app);
+export const realtimeDb = getDatabase();
 
 export default app;

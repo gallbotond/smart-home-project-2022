@@ -67,7 +67,7 @@ export const userRows = [
   {
     id: 4,
     type: "proximity",
-    img: "./img/proximity.svg",
+    img: "/img/proximity.svg",
     name: "Front Door",
     status: "online",
     logs: 16,

@@ -7,17 +7,11 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { useEffect, useState } from "react";
+import { onValue, ref } from "firebase/database";
+import { realtimeDb } from "../../firebase";
 
-const data = [
-  { name: "18:00", Temp: 12 },
-  { name: "19:00", Temp: 21 },
-  { name: "20:00", Temp: 8 },
-  { name: "21:00 PM", Temp: 16 },
-  { name: "22:00", Temp: 9 },
-  { name: "23:00", Temp: 17 },
-];
-
-const Chart = ({ aspect, title }) => {
+const Chart = ({ aspect, title, data }) => {
   return (
     <div className="chart">
       <div className="title">{title}</div>
@@ -29,20 +23,20 @@ const Chart = ({ aspect, title }) => {
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <defs>
-            <linearGradient id="Temp" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="temp" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
               <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <XAxis dataKey="name" stroke="gray" />
+          <XAxis dataKey="name" stroke="gray" fontSize={12} />
           <CartesianGrid strokeDasharray="3 3" className="chartGrid" />
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="Temp"
+            dataKey="temp"
             stroke="#8884d8"
             fillOpacity={1}
-            fill="url(#Temp)"
+            fill="url(#temp)"
           />
         </AreaChart>
       </ResponsiveContainer>
