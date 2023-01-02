@@ -5,10 +5,12 @@
 #define DHTTYPE  DHT11
 #define LED 7
 #define LED2 8
+#define LED3 10
+#define WATERLEVELPIN A4
 
 DHT dht(DHTPIN, DHTTYPE);
 
-unsigned long interval = 50, getdatafromDHT = 0, getdatafromsonicsensor = 0, printdatatomonitor = 0, uploaddatatofirebase = 0, state = 0; 
+unsigned long interval = 50, getdatafromDHT = 0, getdatafromsonicsensor = 0, printdatatomonitor = 0, uploaddatatofirebase = 0, getdatafromwatersensor = 0, state = 0; 
 unsigned long actual = 0, old = 0;
 
 byte led;
@@ -23,14 +25,21 @@ struct sonicsensorstruct {
   float currentnoiselevel;
 };
 
+struct watersensorstruct {
+  float waterlevel;
+};
+
+
 dhtsensorstruct dhtsensor{0,0,0};
 sonicsensorstruct sonicsensor{0};
+watersensorstruct watersensor{0};
 
 void setup() {
   Serial.begin(9600);
   dht.begin(); // initialize the sensor
   pinMode(LED , OUTPUT);
   pinMode(LED2 , OUTPUT);
+  pinMode(LED3 , OUTPUT);
 }
 
 void loop() {
@@ -76,7 +85,12 @@ void loop() {
           dhtsensorfunction();
         }
 
-        if (actual > getdatafromsonicsensor + 100) {
+        if (actual > getdatafromwatersensor + 100) {
+          getdatafromwatersensor = actual;
+          waterlevelread();
+        }
+
+         if (actual > getdatafromsonicsensor + 200) {
           getdatafromsonicsensor = actual;
           sonicsensorread();
         }
@@ -104,7 +118,13 @@ void printdata(){
     Serial.print(dhtsensor.tempF);
     Serial.print(",\"SENSOR4\":");
     Serial.print(sonicsensor.currentnoiselevel);
+    Serial.print(",\"SENSOR5\":");
+    Serial.print(watersensor.waterlevel);
     Serial.println("}");
+  }
+
+void waterlevelread(){
+  watersensor.waterlevel = analogRead(A4);
   }
 
 void sonicsensorread(){
@@ -125,4 +145,3 @@ void dhtsensorfunction(){
     Serial.println("Failed to read from DHT sensor!");
   }
 }
-
