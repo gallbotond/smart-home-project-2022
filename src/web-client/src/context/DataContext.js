@@ -37,7 +37,7 @@ export const DataContextProvider = ({ children }) => {
     );
 
     return () => unsub();
-  }, []);
+  }, [data]);
 
   const handleDelete = async (id) => {
     try {
