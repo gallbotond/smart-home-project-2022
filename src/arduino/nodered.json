@@ -44,8 +44,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 960,
-        "y": 160,
+        "x": 1020,
+        "y": 100,
         "wires": []
     },
     {
@@ -66,7 +66,8 @@
                 "0031b774801f6ce1",
                 "75b8dc8980ac0823",
                 "67e79c24ee157bbe",
-                "7721e7ab55978106"
+                "7721e7ab55978106",
+                "c6a76a4023c6aac6"
             ]
         ]
     },
@@ -102,7 +103,8 @@
         "wires": [
             [
                 "97ace192dbb5a179",
-                "f068f3dd75177cb7"
+                "d0e0b966227bd080",
+                "c33b3dec0314fe78"
             ]
         ]
     },
@@ -118,11 +120,12 @@
         "finalize": "",
         "libs": [],
         "x": 700,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "8209a410cee7eca8",
-                "a0182e4f9307f597"
+                "031f7ed72f080d20",
+                "01ee808ca2adaf35"
             ]
         ]
     },
@@ -138,11 +141,12 @@
         "finalize": "",
         "libs": [],
         "x": 700,
-        "y": 340,
+        "y": 460,
         "wires": [
             [
                 "5697d7da96d6292a",
-                "2a34ca57444defa8"
+                "4a34b7158ed0fd9c",
+                "499ac7d929b6136f"
             ]
         ]
     },
@@ -170,7 +174,7 @@
         "seg2": "",
         "className": "",
         "x": 980,
-        "y": 240,
+        "y": 280,
         "wires": []
     },
     {
@@ -196,8 +200,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 960,
-        "y": 340,
+        "x": 980,
+        "y": 460,
         "wires": []
     },
     {
@@ -212,11 +216,12 @@
         "finalize": "",
         "libs": [],
         "x": 710,
-        "y": 440,
+        "y": 640,
         "wires": [
             [
                 "f7d9731b472edc36",
-                "c0043023a9273f8c"
+                "6e4f03fbf48f8586",
+                "573e2582c55a2fd2"
             ]
         ]
     },
@@ -259,23 +264,7 @@
         "useDifferentColor": false,
         "className": "",
         "x": 970,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f068f3dd75177cb7",
-        "type": "firebase modify",
-        "z": "885b7fe5b7afaeb2",
-        "name": "",
-        "firebaseconfig": "",
-        "childpath": "DHT11/Humidity",
-        "method": "set",
-        "value": "msg.payload",
-        "priority": "msg.priority",
-        "x": 1340,
-        "y": 60,
+        "y": 640,
         "wires": [
             []
         ]
@@ -286,12 +275,12 @@
         "z": "885b7fe5b7afaeb2",
         "name": "",
         "firebaseconfig": "",
-        "childpath": "DHT11/Temperature C",
-        "method": "set",
-        "value": "msg.payload",
+        "childpath": "7020210e49a/values",
+        "method": "push",
+        "value": "Firebase.ServerValue.TIMESTAMP",
         "priority": "msg.priority",
-        "x": 1360,
-        "y": 200,
+        "x": 1470,
+        "y": 220,
         "wires": [
             []
         ]
@@ -302,12 +291,12 @@
         "z": "885b7fe5b7afaeb2",
         "name": "",
         "firebaseconfig": "",
-        "childpath": "DHT11/Temperature F",
-        "method": "set",
-        "value": "msg.payload",
+        "childpath": "5637c74dfcf/values",
+        "method": "push",
+        "value": "Firebase.ServerValue.TIMESTAMP",
         "priority": "msg.priority",
-        "x": 1360,
-        "y": 300,
+        "x": 1460,
+        "y": 420,
         "wires": [
             []
         ]
@@ -318,12 +307,12 @@
         "z": "885b7fe5b7afaeb2",
         "name": "",
         "firebaseconfig": "",
-        "childpath": "SonicSensor/NoiseLevel",
-        "method": "set",
-        "value": "msg.payload",
+        "childpath": "37c74dfcf0e/values",
+        "method": "push",
+        "value": "Firebase.ServerValue.TIMESTAMP",
         "priority": "msg.priority",
-        "x": 1370,
-        "y": 400,
+        "x": 1460,
+        "y": 600,
         "wires": [
             []
         ]
@@ -334,12 +323,12 @@
         "z": "885b7fe5b7afaeb2",
         "name": "",
         "firebaseconfig": "",
-        "childpath": "LED",
+        "childpath": "7c74dfcf0e6/values",
         "atStart": true,
         "eventType": "value",
         "queries": [],
-        "x": 260,
-        "y": 540,
+        "x": 330,
+        "y": 1060,
         "wires": [
             [
                 "7c7330c7346f7f38",
@@ -370,8 +359,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 690,
-        "y": 540,
+        "x": 710,
+        "y": 1060,
         "wires": []
     },
     {
@@ -380,8 +369,8 @@
         "z": "885b7fe5b7afaeb2",
         "name": "",
         "serial": "aa604a3528e2ac0a",
-        "x": 690,
-        "y": 620,
+        "x": 710,
+        "y": 1140,
         "wires": []
     },
     {
@@ -390,12 +379,12 @@
         "z": "885b7fe5b7afaeb2",
         "name": "",
         "firebaseconfig": "",
-        "childpath": "LED2",
+        "childpath": "c74dfcf0e6c/values",
         "atStart": true,
         "eventType": "value",
         "queries": [],
-        "x": 270,
-        "y": 700,
+        "x": 330,
+        "y": 1220,
         "wires": [
             [
                 "3bcd9a26bd822bf8",
@@ -426,8 +415,8 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 690,
-        "y": 700,
+        "x": 710,
+        "y": 1220,
         "wires": []
     },
     {
@@ -436,9 +425,234 @@
         "z": "885b7fe5b7afaeb2",
         "name": "",
         "serial": "aa604a3528e2ac0a",
-        "x": 690,
-        "y": 780,
+        "x": 710,
+        "y": 1300,
         "wires": []
+    },
+    {
+        "id": "5137d04cba897353",
+        "type": "firebase modify",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "637c74dfcf0/values",
+        "method": "push",
+        "value": "Firebase.ServerValue.TIMESTAMP",
+        "priority": "msg.priority",
+        "x": 1460,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0e0b966227bd080",
+        "type": "timestamp",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "x": 1070,
+        "y": 40,
+        "wires": [
+            [
+                "5137d04cba897353"
+            ]
+        ]
+    },
+    {
+        "id": "c33b3dec0314fe78",
+        "type": "firebase modify",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "637c74dfcf0/values",
+        "method": "push",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1280,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "031f7ed72f080d20",
+        "type": "timestamp",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "x": 1070,
+        "y": 220,
+        "wires": [
+            [
+                "a0182e4f9307f597"
+            ]
+        ]
+    },
+    {
+        "id": "01ee808ca2adaf35",
+        "type": "firebase modify",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "7020210e49a/values",
+        "method": "push",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1290,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "499ac7d929b6136f",
+        "type": "firebase modify",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "5637c74dfcf/values",
+        "method": "push",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1280,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4a34b7158ed0fd9c",
+        "type": "timestamp",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "x": 1070,
+        "y": 420,
+        "wires": [
+            [
+                "2a34ca57444defa8"
+            ]
+        ]
+    },
+    {
+        "id": "6e4f03fbf48f8586",
+        "type": "timestamp",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "x": 1070,
+        "y": 600,
+        "wires": [
+            [
+                "c0043023a9273f8c"
+            ]
+        ]
+    },
+    {
+        "id": "573e2582c55a2fd2",
+        "type": "firebase modify",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "37c74dfcf0e/values",
+        "method": "push",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1280,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c6a76a4023c6aac6",
+        "type": "function",
+        "z": "885b7fe5b7afaeb2",
+        "name": "getwaterlevel",
+        "func": "msg.payload = msg.payload.SENSOR5\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 820,
+        "wires": [
+            [
+                "35dfc41c7d451222",
+                "85b13eb64a15a6f3",
+                "7be68774b31ece7a"
+            ]
+        ]
+    },
+    {
+        "id": "35dfc41c7d451222",
+        "type": "ui_gauge",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "group": "9fdd229ea9e61c2b",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 970,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "85b13eb64a15a6f3",
+        "type": "timestamp",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "x": 930,
+        "y": 760,
+        "wires": [
+            [
+                "4574788ae2659a60"
+            ]
+        ]
+    },
+    {
+        "id": "4574788ae2659a60",
+        "type": "firebase modify",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "WaterLevelSensor",
+        "method": "push",
+        "value": "Firebase.ServerValue.TIMESTAMP",
+        "priority": "msg.priority",
+        "x": 1380,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7be68774b31ece7a",
+        "type": "firebase modify",
+        "z": "885b7fe5b7afaeb2",
+        "name": "",
+        "firebaseconfig": "",
+        "childpath": "WaterLevelSensor",
+        "method": "push",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1360,
+        "y": 880,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "aa604a3528e2ac0a",
@@ -487,6 +701,17 @@
         "name": "LED1",
         "tab": "bb2b2a0610a698d1",
         "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9fdd229ea9e61c2b",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "bb2b2a0610a698d1",
+        "order": 4,
         "disp": true,
         "width": "6",
         "collapse": false,
