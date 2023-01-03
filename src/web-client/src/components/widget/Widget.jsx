@@ -10,7 +10,7 @@ import { db } from "../../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useState } from "react";
 
-const Widget = ({ type }) => {
+const Widget = ({ type, title, icon }) => {
   let data;
 
   const [amount, setAmount] = useState(null);

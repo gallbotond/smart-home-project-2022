@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { UserAuth } from "./context/AuthContext";
 import { DataContextProvider } from "./context/DataContext";
+import Update from "./pages/update/Update";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -64,6 +65,16 @@ function App() {
                   <RequireAuth>
                     <DataContextProvider>
                       <New inputs={sensorInputs} title="Add New Sensor" />
+                    </DataContextProvider>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="update/:sensorId"
+                element={
+                  <RequireAuth>
+                    <DataContextProvider>
+                      <Update />
                     </DataContextProvider>
                   </RequireAuth>
                 }

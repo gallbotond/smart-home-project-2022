@@ -32,12 +32,13 @@ export const DataContextProvider = ({ children }) => {
           list.push({ id: doc.id, ...doc.data() });
         });
         setData(list);
+        console.log('set', list)
       },
       (err) => console.log(err)
     );
 
     return () => unsub();
-  }, [data]);
+  }, []);
 
   const handleDelete = async (id) => {
     try {

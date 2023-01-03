@@ -23,7 +23,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">asdf</span>
+          <span className="logo">Sensor admin</span>
         </Link>
       </div>
       <hr />
@@ -43,28 +43,7 @@ const Sidebar = () => {
               <span>Sensors</span>
             </li>
           </Link>
-          <p className="title">USEFUL</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>Stats</span>
-          </li>
-          <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
-          </li>
-          <p className="title">SERVICE</p>
-          <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>System Health</span>
-          </li>
-          <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>Logs</span>
-          </li>
-          <li>
-            <SettingsApplicationsIcon className="icon" />
-            <span>Settings</span>
-          </li>
+         
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
@@ -72,7 +51,7 @@ const Sidebar = () => {
           </li>
           <li>
             <ExitToAppIcon className="icon" />
-            <button onClick={logout}>Logout</button>
+            <span onClick={logout}>Logout</span>
           </li>
         </ul>
       </div>

@@ -31,16 +31,19 @@ export default function Signup() {
   return (
     <div className="login">
       <form onSubmit={handleSignup}>
+        <h3>Email</h3>
         <input
           type="email"
           autoComplete="email"
           onChange={(e) => setEmail(e.target.value)}
         />
+        <h3>Password</h3>
         <input
           type="password"
           autoComplete="password"
           onChange={(e) => setPassword(e.target.value)}
         />
+        <h3>Confirm password</h3>
         <input
           type="password"
           autoComplete="password"

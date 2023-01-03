@@ -31,11 +31,13 @@ const Login = () => {
   return (
     <div className="login">
       <form onSubmit={handleLogin}>
+        <h3>Email</h3>
         <input
           type="email"
           autoComplete="email"
           onChange={(e) => setEmail(e.target.value)}
         />
+        <h3>password</h3>
         <input
           type="password"
           autoComplete="password"
