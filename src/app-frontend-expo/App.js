@@ -1,14 +1,11 @@
 import { View, Text } from "react-native";
 import React from "react";
-import FoodDeliveryApp from "./apps/FoodDeliveryApp";
-import TodoListApp from "./apps/TodoListApp";
+
+
+import TodoList from "./apps/TodoList";
 
 export default function App() {
   return (
-    <>
-      {/* <FoodDeliveryApp /> */}
-      {/* <TodoListApp /> */}
-      
-    </>
+      <TodoList />
   );
 }
