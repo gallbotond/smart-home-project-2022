@@ -84,6 +84,10 @@ const Single = () => {
                   <span className="itemKey">Type:</span>
                   <span className="itemValue">{data.category}</span>
                 </div>
+                <div className="detailItem">
+                  <span className="itemKey">UID:</span>
+                  <span className="itemValue">{data.uid}</span>
+                </div>
               </div>
             </div>
             <div className="item">
