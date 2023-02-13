@@ -114,10 +114,6 @@ const Single = () => {
             )}
           </div>
         </div>
-        <div className="bottom">
-          <h1 className="title">Last Transactions</h1>
-          <List />
-        </div>
       </div>
     </div>
   );
